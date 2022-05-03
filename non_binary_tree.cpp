@@ -60,6 +60,43 @@ nbAddr nbSearch(nbAddr root, infotype x){
 	}
 }
 
+void nbIn(nbAddr root){
+ 	if (root!=NULL){
+		nbIn(root->fs); 
+		if (root->fs==NULL) printf("%d ", root->info); 
+		if (root->parent !=NULL) 
+			if (root->parent->fs==root)
+				printf("%d ", root->parent->info);
+		nbIn(root->nb);
+	}
+}
+
+void nbPre(nbAddr root){
+	if (root!=NULL){
+		printf("%d ", root->info);
+		nbPre(root->fs);
+		nbPre(root->nb);
+	}
+}
+
+void nbPost(nbAddr root){
+	if (root!=NULL){
+		nbPost(root->fs);
+		printf("%d ", root->info);
+		nbPost(root->nb);
+		
+	}
+}
+
+void nbLevel(nbAddr root,int curLevel, int desLevel){
+	if(root != NULL){
+		if(curLevel == desLevel)
+		printf("%d ",root->info); 
+		nbLevel(root->fs,curLevel+1,desLevel);
+		nbLevel(root->nb,curLevel,desLevel);
+	}
+}
+
 void nbPrint(nbAddr node, char tab[], char type[]){
 	char tempTab[255];
 	strcpy(tempTab, tab);
@@ -69,4 +106,17 @@ void nbPrint(nbAddr node, char tab[], char type[]){
 		nbPrint(node->fs, tempTab, "First Son");
 		nbPrint(node->nb, tab, "Next Brother");
 	}
+}
+
+int nbDepth(nbAddr root){
+	int y,z;
+
+	if(root==NULL)
+		return -1;
+	y=nbDepth(root->fs);
+	z=nbDepth(root->nb);
+	if (y > z)
+		return (y+1);
+	else
+		return (z+1);
 }

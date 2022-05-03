@@ -25,5 +25,10 @@ void nbCreate(nbTree *tree);
 void nbInsert(nbTree *root, nbAddr parent, infotype x);
 void nbPrint(nbAddr node, char tab[], char type[]);
 nbAddr nbSearch(nbAddr root, infotype x);
+void nbIn(nbAddr root);
+void nbPost(nbAddr root);
+void nbPre(nbAddr root);
+void nbLevel (nbAddr root, int curLevel, int desLevel);
+int nbDepth(nbAddr root);
 
 #endif
