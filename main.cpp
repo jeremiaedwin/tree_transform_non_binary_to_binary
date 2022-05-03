@@ -11,7 +11,16 @@ int main(int argc, char** argv) {
 	
 	nbCreate(&non_binary_tree);
 	bCreate(&binary_tree);
-	
+	nbInsert(&non_binary_tree, 0, 1);
+	nbInsert(&non_binary_tree, nbSearch(non_binary_tree.root, 1), 2);
+	nbInsert(&non_binary_tree, nbSearch(non_binary_tree.root, 1), 3);
+	nbInsert(&non_binary_tree, nbSearch(non_binary_tree.root, 1), 4);
+	nbInsert(&non_binary_tree, nbSearch(non_binary_tree.root, 2), 5);
+	nbInsert(&non_binary_tree, nbSearch(non_binary_tree.root, 2), 6);
+	nbInsert(&non_binary_tree, nbSearch(non_binary_tree.root, 4), 7);
+	nbInsert(&non_binary_tree, nbSearch(non_binary_tree.root, 4), 8);
+	nbInsert(&non_binary_tree, nbSearch(non_binary_tree.root, 4), 9);
+	nbInsert(&non_binary_tree, nbSearch(non_binary_tree.root, 4), 10);
 	int choose;
 	char ascii1 = 205;
 	char ascii2 = 201; 
@@ -53,6 +62,10 @@ int main(int argc, char** argv) {
 				break;
 			case 2:
 				create_binary_tree(&binary_tree, non_binary_tree);
+				system("pause");
+				break;
+			case 3:
+				create_avl_tree(&binary_tree, non_binary_tree);
 				system("pause");
 				break;
 		}
